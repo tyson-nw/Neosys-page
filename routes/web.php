@@ -9,8 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/page/create', [PageController::class, 'create'])->middleware('auth');
-Route::post('/page/create', [PageController::class, 'store'])->middleware('auth');
+Route::get('/page/create', [PageController::class, 'create']);
+Route::post('/page/create', [PageController::class, 'store']);
+Route::delete('/page/{page}', [PageController::class, 'destroy']);
 Route::get('/page/{page:slug}', function(Page $page){
     return view('page.view', $page);
 });

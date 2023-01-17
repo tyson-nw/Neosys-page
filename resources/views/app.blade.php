@@ -13,6 +13,7 @@
             @endguest
             @auth
                 Profile
+                <form method="POST" action="/logout"> @csrf <button type='submit'>Logout</button></form>
             @endauth
         </nav>
     </header>

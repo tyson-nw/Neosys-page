@@ -29,4 +29,10 @@ class PageController extends Controller
 
         return redirect('/pages')->with('page_created', ['title'=>$valid['title'], 'slug'=>$valid['slug']]);
     }
+
+    public function destroy(Page $page){
+        session()->flash('page_deleted', ['title'=>$page['title'], 'slug'=>$page['slug']]);
+        $page->delete();
+        return redirect('/pages');
+    }
 }
