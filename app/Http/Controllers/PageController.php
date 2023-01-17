@@ -16,8 +16,8 @@ class PageController extends Controller
 
     public function store(){
         $request = request();
-        //dd($request);
-        $request->merge(['slug' => Str::slug($request->title)]);
+        $request->merge(['slug' => Str::slug($request->title)]);    //add computed slug for validation
+        
         $valid = request()->validate([
             'title' => ['required','max:255','min:3','unique:pages,title'],
             'slug' => [ Rule::notIn(['create'], 'invalid title')],
